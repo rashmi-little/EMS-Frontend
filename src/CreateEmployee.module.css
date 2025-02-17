@@ -1,0 +1,131 @@
+
+
+
+
+
+/* Container for the form */
+.container {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  padding: 40px;
+  text-align: center;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+/* Heading styling */
+h2 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 30px;
+  font-weight: 700;
+}
+
+/* Form layout */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Label styling */
+label {
+  text-align: left;
+  font-size: 1rem;
+  color: #555;
+  font-weight: 600;
+}
+
+/* Styling for input fields */
+input[type="text"],
+input[type="email"],
+input[type="date"],
+input[type="number"] { /* Added for salary input */
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+/* Focus styling for input fields */
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="date"]:focus,
+input[type="number"]:focus { /* Added for salary input */
+  border-color: #ff4b1f;
+}
+
+/* Button styling */
+button {
+  background: linear-gradient(135deg, #ff4b1f, #ff9068);
+  border: none;
+  border-radius: 50px;
+  color: white;
+  font-size: 1rem;
+  padding: 12px 25px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  width: 100%; /* Ensures the button takes the full width of the form */
+}
+
+/* Button hover effect */
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Button focus effect */
+button:focus {
+  outline: none;
+}
+
+/* Link styling */
+a {
+  text-decoration: none;
+  color: #ff4b1f;
+  font-size: 1rem;
+  margin-top: 15px;
+  transition: color 0.3s ease;
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+}
+
+/* Link hover effect */
+a:hover {
+  color: #ff9068;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+  .container {
+    width: 90%;
+    padding: 20px;
+  }
+
+  h2 {
+    font-size: 1.6rem;
+  }
+
+  button {
+    font-size: 1rem;
+    padding: 12px 25px;
+  }
+}
+
