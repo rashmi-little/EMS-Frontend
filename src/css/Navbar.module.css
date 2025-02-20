@@ -1,4 +1,3 @@
-/* Navbar Styling */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -22,6 +21,9 @@
   .navLinks {
     display: flex;
     gap: 20px;
+    margin-right: 10rem;
+    align-items: center;
+    justify-content: center;
   }
   
   .navItem {

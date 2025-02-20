@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import styles from "../../css/Table.module.css";
+import styles from "../../css/EmployeeTable.module.css";
 import "../../css/Base.css";
 import { toast } from "react-toastify";
 import {
@@ -77,11 +77,11 @@ export default () => {
   }
   return (
     <div className={styles.container}>
-      <h2 className={styles.h2}>Employee Records</h2>
+      <div className={styles.heading_container}>
+        <h2 className={styles.h2}>Employees</h2>
 
-      <div className={styles.buttonContainer}>
         <Link to="./create" className={styles.addBtn}>
-          Add Employee
+          + Add
         </Link>
       </div>
 
@@ -90,10 +90,9 @@ export default () => {
           <thead>
             <tr>
               <th>S/N</th>
-              <th>Employee ID</th>
-              <th>Employee Name</th>
+              <th>Name</th>
               <th>Salary</th>
-              <th>Date of Joining</th>
+              <th>Joining</th>
               <th>Actions</th>
             </tr>
           </thead>
@@ -102,10 +101,9 @@ export default () => {
               employees.map((emp, index) => (
                 <tr key={emp.id}>
                   <td>{index + 1}</td>
-                  <td>{emp.id}</td>
                   <td>{emp.name}</td>
                   <td>{emp.salary}</td>
-                  <td>{emp.dateOfJoining}</td>
+                  <td>{(emp.dateOfJoining).split("-").reverse().join("-")}</td>
                   <td>
                     <div className={styles.actionButtons}>
                       <button

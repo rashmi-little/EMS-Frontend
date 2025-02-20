@@ -35,36 +35,39 @@ export default () => {
       <div className={styles.card}>
         <h1 className={styles.header}>Employee Details</h1>
         {employee ? (
-          <>
+          <div className={styles.detailsGroup}>
             <p className={styles.details}>
-              <span>Name:</span> {employee.name}
+              <span className={styles.label}>Name:</span> {employee.name}
             </p>
             <p className={styles.details}>
-              <span>Email:</span> {employee.email}
+              <span className={styles.label}>Email:</span> {employee.email}
             </p>
             <p className={styles.details}>
-              <span>Salary:</span> {employee.salary}
+              <span className={styles.label}>Salary:</span> {employee.salary}
             </p>
             <p className={styles.details}>
-              <span>Date of Joining:</span> {employee.dateOfJoining}
+              <span className={styles.label}>Date of Joining:</span>{" "}
+              {employee.dateOfJoining}
             </p>
 
-            <ul>
-              {departments && departments.length > 0 ? (
-                departments.map((dept) => (
-                  <li key={dept.id} className={styles.departmentItem}>
-                    {dept.name}
-                  </li>
-                ))
-              ) : (
-                <li>No departments found</li>
-              )}
-            </ul>
+            <div class={styles.departmentList}>
+              <ul>
+                {departments && departments.length > 0 ? (
+                  departments.map((dept) => (
+                    <li key={dept.id} className={styles.departmentItem}>
+                      {dept.name}
+                    </li>
+                  ))
+                ) : (
+                  <li>No departments found</li>
+                )}
+              </ul>
+            </div>
 
             <Link to="/" className={styles.backButton}>
               Back
             </Link>
-          </>
+          </div>
         ) : (
           <p>Loading...</p>
         )}

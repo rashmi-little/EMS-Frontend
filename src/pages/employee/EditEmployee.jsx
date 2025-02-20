@@ -1,5 +1,5 @@
 import { Link, useNavigate, useParams } from "react-router-dom";
-import styles from "../../css/CreateForm.module.css";
+import styles from "../../css/CreateEmployeeForm.module.css";
 import { useEffect, useState } from "react";
 import Select from "react-select/base";
 import { toast } from "react-toastify";
@@ -121,76 +121,85 @@ export default () => {
 
   return (
     <div className={styles.container}>
-      <h2>Update Employee</h2>
-
       <form onSubmit={handleSubmit}>
-        <label htmlFor="name">Enter employee name : </label>
-        <input
-          type="text"
-          name="name"
-          id="name"
-          value={name}
-          required
-          onChange={handleNameChange}
-        />
-        <label htmlFor="email">Enter employee email : </label>
-        <input
-          type="email"
-          name="email"
-          id="email"
-          value={email}
-          required
-          onChange={handleEmailChange}
-        />
-        <label htmlFor="salary">Enter employee salary : </label>
-        <input
-          type="number"
-          name="salary"
-          value={salary}
-          placeholder="Enter salary"
-          min="0"
-          step="0.01"
-          id="salary"
-          required
-          onChange={handleSalaryChanage}
-        />
-        <label htmlFor="doj">Enter date of joining : </label>
-        <input
-          type="date"
-          name="doj"
-          id="doj"
-          value={dateOfJoining}
-          required
-          onChange={handleDateOfJoiningChange}
-        />
+        <div className={styles.form_group}>
+          <label htmlFor="name">Enter employee name : </label>
+          <input
+            type="text"
+            name="name"
+            id="name"
+            value={name}
+            required
+            onChange={handleNameChange}
+          />
+        </div>
+        <div className={styles.form_group}>
+          <label htmlFor="email">Enter employee email : </label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            value={email}
+            required
+            onChange={handleEmailChange}
+          />
+        </div>
+        <div className={styles.form_group}>
+          <label htmlFor="salary">Enter employee salary : </label>
+          <input
+            type="number"
+            name="salary"
+            value={salary}
+            placeholder="Enter salary"
+            min="0"
+            step="0.01"
+            id="salary"
+            required
+            onChange={handleSalaryChanage}
+          />
+        </div>
 
-        <Select
-          options={allDepartments.map((dept) => ({
-            value: dept.id,
-            label: dept.name,
-          }))}
-          onMenuClose={handleCloseMenu}
-          onMenuOpen={handleOpenMenu}
-          menuIsOpen={isMenuOpen}
-          isMulti={true}
-          onChange={(selectedOptions) => {
-            const selectedIds = new Set(
-              selectedOptions.map((option) => option.value)
-            );
-            setDepartmentsId(selectedIds);
-          }}
-          value={allDepartments
-            .filter((dept) => departmentsId.has(dept.id))
-            .map((dept) => ({
+        <div className={styles.form_group}>
+          <label htmlFor="doj">Enter date of joining : </label>
+          <input
+            type="date"
+            name="doj"
+            id="doj"
+            value={dateOfJoining}
+            required
+            onChange={handleDateOfJoiningChange}
+          />
+        </div>
+
+        <div className={styles.form_group}>
+          <label>Edit Departments :</label>
+          <Select
+            options={allDepartments.map((dept) => ({
               value: dept.id,
               label: dept.name,
             }))}
-          onInputChange={handleInputChange}
-        />
-
-        <div>
+            onMenuClose={handleCloseMenu}
+            onMenuOpen={handleOpenMenu}
+            menuIsOpen={isMenuOpen}
+            isMulti={true}
+            onChange={(selectedOptions) => {
+              const selectedIds = new Set(
+                selectedOptions.map((option) => option.value)
+              );
+              setDepartmentsId(selectedIds);
+            }}
+            value={allDepartments
+              .filter((dept) => departmentsId.has(dept.id))
+              .map((dept) => ({
+                value: dept.id,
+                label: dept.name,
+              }))}
+            onInputChange={handleInputChange}
+          />
+        </div>
+        <div className={styles.form_action}>
           <button className={styles.save_btn}>Update</button>
-          <Link to="/" className="">
+          <Link to="/" className={styles.back_btn}>
             Back
           </Link>
         </div>

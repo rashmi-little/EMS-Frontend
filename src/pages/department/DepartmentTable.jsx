@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import styles from "../../css/Table.module.css";
+import styles from "../../css/DepartmentTable.module.css";
 import "../../css/Base.css";
 import { toast } from "react-toastify";
 
@@ -80,11 +80,10 @@ export default () => {
   }
   return (
     <div className={styles.container}>
-      <h2 className={styles.h2}>Department Records</h2>
-
-      <div className={styles.buttonContainer}>
+      <div className={styles.heading_container}>
+        <h2 className={styles.h2}>Departments</h2>
         <Link to="./create" className={styles.addBtn}>
-          Add Department
+          +Add
         </Link>
       </div>
 
@@ -93,8 +92,7 @@ export default () => {
           <thead>
             <tr>
               <th>S/N</th>
-              <th>Department ID</th>
-              <th>Department Name</th>
+              <th>Name</th>
               <th>location</th>
               <th>Actions</th>
             </tr>
@@ -104,7 +102,6 @@ export default () => {
               departments.map((dept, index) => (
                 <tr key={dept.id}>
                   <td>{index + 1}</td>
-                  <td>{dept.id}</td>
                   <td>{dept.name}</td>
                   <td>{dept.location}</td>
                   <td>

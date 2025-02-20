@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import styles from "../../css/CreateForm.module.css";
+import styles from "../../css/CreateEmployeeForm.module.css";
 import "../../css/Base.css";
 import { useEffect, useRef, useState } from "react";
 import { toast } from "react-toastify";
@@ -67,9 +67,7 @@ export default () => {
       } else {
         toast.error("Unable to add employee");
       }
-      toast.success(
-        "Employee created successfully"
-      );
+      toast.success("Employee created successfully");
       navigate("/dashboard");
     } catch (error) {
       if (error.response.status === 400) {
@@ -82,45 +80,80 @@ export default () => {
 
   return (
     <div className={styles.container}>
-      <h2>Add a new Employee</h2>
+      {/* <h2>Add Employee</h2> */}
 
       <form onSubmit={handleSubmit}>
-        <label htmlFor="name">Enter employee name : </label>
-        <input type="text" name="name" id="name" ref={nameRef} required />
-        <label htmlFor="email">Enter employee email : </label>
-        <input type="email" name="email" id="email" ref={emailRef} required />
-        <label htmlFor="salary">Enter employee salary : </label>
-        <input
-          type="number"
-          name="salary"
-          ref={salaryRef}
-          placeholder="Enter salary"
-          min="0"
-          id="salary"
-          required
-        />
-        <label htmlFor="doj">Enter date of joining : </label>
-        <input
-          type="date"
-          name="doj"
-          id="doj"
-          ref={dateOfJoiningRef}
-          required
-        />
-        <label htmlFor="departments"></label>
-        <select name="departments" id="departments" ref={departmentRef}>
-          {AllDepartments.map((dept) => {
-            return (
-              <option value={dept.id} key={dept.id}>
-                {dept.name}
-              </option>
-            );
-          })}
-        </select>
+        <div className={styles.form_group}>
+          <label htmlFor="name">Enter employee name:</label>
+          <input
+            type="text"
+            name="name"
+            id="name"
+            ref={nameRef}
+            placeholder="John Doe"
+            required
+          />
+        </div>
 
-        <div>
-          <button className={styles.save_btn}>Save</button>
-          <Link to="/">Back</Link>
+        <div className={styles.form_group}>
+          <label htmlFor="email">Enter employee email:</label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            ref={emailRef}
+            placeholder="john.doe@example.com"
+            required
+          />
+        </div>
+
+        <div className={styles.form_group}>
+          <label htmlFor="salary">Enter employee salary:</label>
+          <input
+            type="number"
+            name="salary"
+            ref={salaryRef}
+            placeholder="50000"
+            min="0"
+            id="salary"
+            required
+          />
+        </div>
+
+        <div className={styles.form_group}>
+          <label htmlFor="doj">Enter date of joining:</label>
+          <input
+            type="date"
+            name="doj"
+            id="doj"
+            ref={dateOfJoiningRef}
+            required
+          />
+        </div>
+
+        <div className={styles.form_group}>
+          <label htmlFor="departments">Select department:</label>
+          <select
+            name="departments"
+            id="departments"
+            ref={departmentRef}
+            required
+          >
+            {AllDepartments.map((dept) => {
+              return (
+                <option value={dept.id} key={dept.id}>
+                  {dept.name}
+                </option>
+              );
+            })}
+          </select>
+        </div>
+
+        <div className={styles.form_action}>
+          <button className={styles.save_btn} type="submit">
+            Save
+          </button>
+          <Link to="/" className={styles.back_btn}>Back</Link>
         </div>
       </form>
     </div>

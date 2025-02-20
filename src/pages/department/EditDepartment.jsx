@@ -1,7 +1,6 @@
 import { Link, useNavigate, useParams } from "react-router-dom";
-import styles from "../../css/CreateForm.module.css";
+import styles from "../../css/CreateDepartmentForm.module.css";
 import { useEffect, useState } from "react";
-import Select from "react-select/base";
 import { toast } from "react-toastify";
 
 const BASE_URL = "http://localhost:2200/api/v1";
@@ -72,8 +71,7 @@ export default () => {
 
   return (
     <div className={styles.container}>
-      <h2>Update Department</h2>
-
+      <h2>Edit Department</h2>
       <form onSubmit={handleSubmit}>
         <label htmlFor="name">Enter department name : </label>
         <input
@@ -95,9 +93,11 @@ export default () => {
           onChange={handleLocationChange}
         />
 
-        <div>
+        <div className={styles.form_action}>
           <button className={styles.save_btn}>Update</button>
-          <Link to="/dashboard/department">Back</Link>
+          <Link to="/dashboard/department" className={styles.back_btn}>
+            Back
+          </Link>
         </div>
       </form>
     </div>

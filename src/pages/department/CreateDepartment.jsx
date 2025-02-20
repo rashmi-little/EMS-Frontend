@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import styles from "../../css/CreateForm.module.css";
+import styles from "../../css/CreateDepartmentForm.module.css";
 import "../../css/Base.css";
 import { useEffect, useRef, useState } from "react";
 import { toast } from "react-toastify";
@@ -41,8 +41,7 @@ export default () => {
 
   return (
     <div className={styles.container}>
-      <h2>Add a new Department</h2>
-
+      <h2>Add New Department</h2>
       <form onSubmit={handleSubmit}>
         <label htmlFor="name">Enter department name : </label>
         <input type="text" name="name" id="name" ref={nameRef} required />
@@ -55,9 +54,9 @@ export default () => {
           ref={locationRef}
           required
         />
-        <div>
+        <div className={styles.form_action}>
           <button className={styles.save_btn}>Save</button>
-          <Link to="/dashboard/department">Back</Link>
+          <Link to="/dashboard/department" className={styles.back_btn}>Back</Link>
         </div>
       </form>
     </div>
