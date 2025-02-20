@@ -20,15 +20,14 @@
 }
 .buttonContainer {
   display: flex;
-  justify-content: flex-end;  
-  max-width: 400px; 
-  padding-right: 10px; 
-  margin-bottom: 30px;  
-  width: 100%; 
+  justify-content: flex-end;
+  max-width: 400px;
+  padding-right: 10px;
+  margin-bottom: 30px;
+  width: 100%;
 }
 
-
-.addEmployeeBtn {
+.addBtn {
   background: linear-gradient(135deg, #ff4b1f, #ff9068);
   border: none;
   border-radius: 50px;
@@ -42,12 +41,12 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.addEmployeeBtn:hover {
+.addBtn:hover {
   transform: scale(1.1);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
 }
 
-.addEmployeeBtn:focus {
+.addBtn:focus {
   outline: none;
 }
 
@@ -59,6 +58,7 @@ a {
 .tableContainer {
   width: 100%;
   overflow-x: auto;
+  overflow-y: auto;
 }
 
 table {
@@ -205,7 +205,7 @@ td .actionButtons button {
     font-size: 2rem;
   }
 
-  .addEmployeeBtn {
+  .addBtn {
     font-size: 1.1rem;
     padding: 12px 20px;
   }
@@ -222,5 +222,48 @@ td .actionButtons button {
   /* Card adjustments for small screens */
   .card {
     padding: 15px;
+  }
+}
+/* Container for pagination buttons */
+.paginationContainer {
+  display: flex;
+  justify-content: center;
+  gap: 15px; 
+  margin-top: 20px;
+}
+
+/* Style for Pagination Buttons */
+.paginationButton {
+  color: white;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 25px; /* Slightly more subtle rounded corners */
+  cursor: pointer;
+  transition: box-shadow 0.3s ease, background-color 0.3s ease; /* Adding transition for background color */
+  background-color: #e6634f; /* Button color */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Hover Effect: Lighter shade of the button color and a more prominent shadow */
+.paginationButton:hover {
+  background-color: #ff4b1f; /* Lighter shade of the original button color */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* More pronounced shadow on hover */
+}
+
+
+/* Disabled Button State */
+.paginationButton:disabled {
+  background-color: #d4d4d4; /* Grey background for disabled state */
+  color: #a1a1a1; /* Lighter text for disabled state */
+  cursor: not-allowed; /* Prevent hover effect on disabled */
+  box-shadow: none; /* Remove shadow for disabled buttons */
+}
+
+/* Optional: Style adjustments for small screens */
+@media (max-width: 768px) {
+  .paginationButton {
+    padding: 8px 16px;
+    font-size: 0.9rem;
   }
 }

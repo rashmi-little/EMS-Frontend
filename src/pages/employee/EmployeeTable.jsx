@@ -1,30 +1,45 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import styles from "./Table.module.css"; // Ensure correct path
-import "./Base.css";
-
-const BASE_URL = "http://localhost:2200/api/v1";
+import styles from "../../css/Table.module.css";
+import "../../css/Base.css";
+import { toast } from "react-toastify";
+import {
+  deleteEmployee,
+  getEmployeeInBatch,
+} from "../../services/EmployeeService";
 
 export default () => {
   const [employees, setEmployees] = useState([]);
+  const [currentPage, setCurrentPage] = useState(0);
+
   const navigate = useNavigate();
 
   const fetchEmployees = async () => {
-    const response = await fetch(`${BASE_URL}/employees`);
-    const data = await response.json();
-    setEmployees(data);
+    try {
+      const response = await getEmployeeInBatch(currentPage);
+      if (response.status === 200) {
+        const data = response.data;
+        setEmployees(data);
+      } else {
+        throw new Error("error fetching employee");
+      }
+    } catch (error) {
+      toast.error(
+        error.message || "something went wrong. please try again later"
+      );
+    }
   };
 
   useEffect(() => {
     fetchEmployees();
-  }, []);
+  }, [currentPage]);
 
   function handleView(empId) {
-    navigate(`/employee/view/${empId}`);
+    navigate(`./view/${empId}`);
   }
 
   function handleEdit(empId) {
-    navigate(`/employee/edit/${empId}`);
+    navigate(`./edit/${empId}`);
   }
 
   async function handleDelete(empId) {
@@ -34,29 +49,38 @@ export default () => {
       )
     ) {
       try {
-        const response = await fetch(`${BASE_URL}/employees/${empId}`, {
-          method: "DELETE",
-        });
+        const response = await deleteEmployee(empId);
 
-        if (!response.ok) {
-          alert("faild to delete");
+        if (response.status == 204) {
+          toast.success("employee deleted successfully");
+
+          setEmployees((prevEmployee) =>
+            prevEmployee.filter((emp) => emp.id != empId)
+          );
+        } else {
+          toast.error("failed to delete employee");
         }
-
-        setEmployees((prevEmployee) =>
-          prevEmployee.filter((emp) => emp.id != empId)
-        );
       } catch (error) {
-        alert("something went wrong");
+        toast.error(error);
       }
     }
   }
 
+  function handlePageDecrease() {
+    if (currentPage > 0) {
+      setCurrentPage((prev) => prev - 1);
+    }
+  }
+
+  function handlePageIncrease() {
+    setCurrentPage((prev) => prev + 1);
+  }
   return (
     <div className={styles.container}>
       <h2 className={styles.h2}>Employee Records</h2>
 
       <div className={styles.buttonContainer}>
-        <Link to="/employee/create" className={styles.addEmployeeBtn}>
+        <Link to="./create" className={styles.addBtn}>
           Add Employee
         </Link>
       </div>
@@ -108,6 +132,23 @@ export default () => {
               ))}
           </tbody>
         </table>
+      </div>
+
+      <div className={styles.paginationContainer}>
+        <button
+          className={styles.paginationButton}
+          onClick={handlePageDecrease}
+          disabled={currentPage === 0}
+        >
+          Prev
+        </button>
+        <button
+          className={styles.paginationButton}
+          onClick={handlePageIncrease}
+          disabled={employees.length < 5}
+        >
+          Next
+        </button>
       </div>
     </div>
   );

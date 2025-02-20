@@ -1,0 +1,85 @@
+/* Navbar Styling */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    padding: 20px 40px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 10;
+  }
+  
+  .title {
+    font-size: 1.8rem;
+    color: #333;
+    font-weight: bold;
+  }
+  
+  .navLinks {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .navItem {
+    font-size: 1.2rem;
+    color: #3f2b96;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+  }
+  
+  /* Active link styling */
+  .navItem.active {
+    color: #ff4b1f;
+  }
+  
+  /* Inactive link styling */
+  .navItem.inactive {
+    color: #3f2b96;
+  }
+  
+  .navItem:hover {
+    color: #ff4b1f;
+  }
+  
+  .logoutContainer {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logoutLink {
+    font-size: 1rem;
+    color: #ff4b1f;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+  }
+  
+  .logoutLink:hover {
+    color: #333;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .navbar {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 20px;
+    }
+  
+    .navLinks {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+    }
+  
+    .title {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+  }
+  
