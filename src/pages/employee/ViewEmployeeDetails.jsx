@@ -50,7 +50,7 @@ export default () => {
               {employee.dateOfJoining}
             </p>
 
-            <div class={styles.departmentList}>
+            <div className={styles.departmentList}>
               <ul>
                 {departments && departments.length > 0 ? (
                   departments.map((dept) => (

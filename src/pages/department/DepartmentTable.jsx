@@ -3,27 +3,40 @@ import { Link, useNavigate } from "react-router-dom";
 import styles from "../../css/DepartmentTable.module.css";
 import "../../css/Base.css";
 import { toast } from "react-toastify";
-
-const BASE_URL = "http://localhost:2200/api/v1";
+import {
+  deleteDepartmentById,
+  getDepartmentsInBatch,
+} from "../../services/DepartmentService";
 
 export default () => {
   const [departments, setDepartments] = useState([]);
-  const [currentPage, setCurrentPage] = useState(0);
+  const [pageDepartments, setPageDepartments] = useState({
+    content: [],
+    totalPages: 0,
+    totalElements: 0,
+    size: 0,
+    page: 1,
+  });
+  const [currentPage, setCurrentPage] = useState(1);
 
   const navigate = useNavigate();
 
   const fetchDepartments = async () => {
     try {
-      const response = await fetch(
-        `${BASE_URL}/departments/batch/${currentPage}`
-      );
+      const response = await getDepartmentsInBatch(currentPage);
 
-      const data = await response.json();
+      const pageDepartments = response.data;
+      setPageDepartments(pageDepartments);
+      const departments = pageDepartments.content;
 
-      if (!response.ok) {
+      if (departments.length == 0) {
+        handlePageDecrease();
+      }
+      if (response.status !== 200) {
         throw new Error("unable to fetch departments");
       }
-      setDepartments(data);
+
+      setDepartments(departments);
     } catch (error) {
       toast.error(
         error.message || "something went wrong while fetching departments."
@@ -50,18 +63,16 @@ export default () => {
       )
     ) {
       try {
-        const response = await fetch(`${BASE_URL}/departments/${deptId}`, {
-          method: "DELETE",
-        });
+        const response = await deleteDepartmentById(deptId);
 
-        if (!response.ok) {
+        if (response.status !== 204) {
           throw new Error("failed to delete");
         }
 
         setDepartments((prevDepartment) =>
           prevDepartment.filter((dept) => dept.id != deptId)
         );
-
+        await fetchDepartments();
         toast.success("department deleted successfully");
       } catch (error) {
         toast.error("something went wrong. please try again later");
@@ -70,7 +81,7 @@ export default () => {
   }
 
   function handlePageDecrease() {
-    if (currentPage > 0) {
+    if (currentPage > 1) {
       setCurrentPage((prev) => prev - 1);
     }
   }
@@ -83,7 +94,7 @@ export default () => {
       <div className={styles.heading_container}>
         <h2 className={styles.h2}>Departments</h2>
         <Link to="./create" className={styles.addBtn}>
-          +Add
+          + Add
         </Link>
       </div>
 
@@ -136,14 +147,14 @@ export default () => {
         <button
           className={styles.paginationButton}
           onClick={handlePageDecrease}
-          disabled={currentPage === 0}
+          disabled={currentPage === 1}
         >
           Prev
         </button>
         <button
           className={styles.paginationButton}
           onClick={handlePageIncrease}
-          disabled={departments.length < 5}
+          disabled={!(currentPage < pageDepartments.totalPages)}
         >
           Next
         </button>

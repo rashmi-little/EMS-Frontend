@@ -10,7 +10,14 @@ import {
 
 export default () => {
   const [employees, setEmployees] = useState([]);
-  const [currentPage, setCurrentPage] = useState(0);
+  const [pageEmployee, setPageEmployee] = useState({
+    content: [],
+    totalPages: 0,
+    totalElements: 0,
+    size: 0,
+    page: 1,
+  });
+  const [currentPage, setCurrentPage] = useState(1);
 
   const navigate = useNavigate();
 
@@ -18,8 +25,14 @@ export default () => {
     try {
       const response = await getEmployeeInBatch(currentPage);
       if (response.status === 200) {
-        const data = response.data;
-        setEmployees(data);
+        const pageEmployee = response.data;
+        setPageEmployee(pageEmployee);
+        const employees = pageEmployee.content;
+
+        if (employees.length === 0) {
+          handlePageDecrease();
+        }
+        setEmployees(employees);
       } else {
         throw new Error("error fetching employee");
       }
@@ -57,6 +70,8 @@ export default () => {
           setEmployees((prevEmployee) =>
             prevEmployee.filter((emp) => emp.id != empId)
           );
+
+          fetchEmployees();
         } else {
           toast.error("failed to delete employee");
         }
@@ -67,7 +82,7 @@ export default () => {
   }
 
   function handlePageDecrease() {
-    if (currentPage > 0) {
+    if (currentPage > 1) {
       setCurrentPage((prev) => prev - 1);
     }
   }
@@ -103,7 +118,7 @@ export default () => {
                   <td>{index + 1}</td>
                   <td>{emp.name}</td>
                   <td>{emp.salary}</td>
-                  <td>{(emp.dateOfJoining).split("-").reverse().join("-")}</td>
+                  <td>{emp.dateOfJoining.split("-").reverse().join("-")}</td>
                   <td>
                     <div className={styles.actionButtons}>
                       <button
@@ -136,14 +151,14 @@ export default () => {
         <button
           className={styles.paginationButton}
           onClick={handlePageDecrease}
-          disabled={currentPage === 0}
+          disabled={currentPage === 1}
         >
           Prev
         </button>
         <button
           className={styles.paginationButton}
           onClick={handlePageIncrease}
-          disabled={employees.length < 5}
+          disabled={!(currentPage < pageEmployee.totalPages)}
         >
           Next
         </button>

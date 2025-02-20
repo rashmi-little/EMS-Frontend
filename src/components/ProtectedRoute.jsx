@@ -5,6 +5,5 @@ export default ({ children }) => {
   if (isAuthenticate()) {
     return children;
   }
-
   return <Navigate to="/login" />;
 };

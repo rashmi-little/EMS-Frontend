@@ -3,8 +3,7 @@ import styles from "../../css/CreateDepartmentForm.module.css";
 import "../../css/Base.css";
 import { useEffect, useRef, useState } from "react";
 import { toast } from "react-toastify";
-
-const BASE_URL = "http://localhost:2200/api/v1";
+import { addDepartment } from "../../services/DepartmentService";
 
 export default () => {
   const navigate = useNavigate();
@@ -20,15 +19,9 @@ export default () => {
     const departmentRequestDto = { name, location };
 
     try {
-      const departmentResponse = await fetch(`${BASE_URL}/departments`, {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(departmentRequestDto),
-      });
+      const departmentResponse = await addDepartment(departmentRequestDto);
 
-      if (!departmentResponse.ok) {
+      if (departmentResponse.status !== 201) {
         throw new Error("unable to create department. please try again later");
       }
 
@@ -56,7 +49,9 @@ export default () => {
         />
         <div className={styles.form_action}>
           <button className={styles.save_btn}>Save</button>
-          <Link to="/dashboard/department" className={styles.back_btn}>Back</Link>
+          <Link to="/dashboard/department" className={styles.back_btn}>
+            Back
+          </Link>
         </div>
       </form>
     </div>

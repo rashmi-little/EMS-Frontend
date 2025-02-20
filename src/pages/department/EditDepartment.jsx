@@ -2,6 +2,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import styles from "../../css/CreateDepartmentForm.module.css";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import { updateDepartment } from "../../services/DepartmentService";
 
 const BASE_URL = "http://localhost:2200/api/v1";
 
@@ -47,18 +48,12 @@ export default () => {
     const departmentRequestDto = { name, location };
 
     try {
-      const departmentResponse = await fetch(
-        `${BASE_URL}/departments/${deptId}`,
-        {
-          method: "PUT",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify(departmentRequestDto),
-        }
+      const departmentResponse = await updateDepartment(
+        deptId,
+        departmentRequestDto
       );
 
-      if (!departmentResponse.ok) {
+      if (departmentResponse.status !== 200) {
         throw new Error("Failed to updated department");
       }
 

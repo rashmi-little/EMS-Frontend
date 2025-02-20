@@ -2,8 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import styles from "../../css/EmployeeView.module.css";
 import { toast } from "react-toastify";
-
-const BASE_URL = "http://localhost:2200/api/v1";
+import { getDepartmentById } from "../../services/DepartmentService";
 
 export default () => {
   const { deptId } = useParams();
@@ -15,10 +14,10 @@ export default () => {
 
   const fetchDepartment = async () => {
     try {
-      const response = await fetch(`${BASE_URL}/departments/${deptId}`);
-      const departmentData = await response.json();
+      const response = await getDepartmentById(deptId);
+      const departmentData = response.data;
 
-      if (!response.ok) {
+      if (response.status !== 200) {
         throw new Error("Unable to fetch department. Please try again later.");
       }
       setDepartment(departmentData);
