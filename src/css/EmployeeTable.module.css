@@ -1,0 +1,271 @@
+.container {
+  margin-top: 2rem;
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  width: 100%;
+  padding: 20px 40px;
+}
+
+.heading_container {
+  display: flex;
+  height: 40px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+
+  .h2 {
+    font-family: "Lora", serif;
+    text-align: center;
+    font-size: 2rem;
+    color: #333;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  .addBtn {
+    background-color: #4f8fd2;
+    border: 1px solid #4f8fd2;
+    border-radius: 50px;
+    color: white;
+    font-size: 1.3rem;
+    font-weight: bold;
+    padding: 10px 30px;
+    cursor: pointer;
+    outline: none;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: auto; /* Set width to auto */
+    max-width: 200px;
+  }
+
+  .addBtn:hover {
+    transform: scale(1.1);
+  }
+
+  .addBtn:focus {
+    outline: none;
+  }
+
+  a {
+    text-decoration: none;
+  }
+}
+
+/* Table container styling */
+.tableContainer {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  animation: tableAppear 1.2s ease-out;
+  margin-top: 20px;
+}
+
+/* Table Header Styling */
+th,
+td {
+  padding: 16px 20px;
+  font-size: 1.1rem;
+  color: #333;
+  text-align: center;
+  font-family: "Roboto", serif;
+}
+
+th {
+  background-color: #f3f3f3;
+  color: #555;
+  font-weight: bold;
+  letter-spacing: 1px;
+  border-bottom: 2px solid #ddd;
+  text-align: center;
+  font-family: "Lato", serif;
+}
+
+th:nth-child(4),
+td:nth-child(4) {
+  width: 180px;
+}
+th:nth-child(2),
+td:nth-child(2) {
+  width: 200px;
+}
+
+tbody tr {
+  background-color: #fafafa;
+  border-bottom: 1px solid #ddd;
+  transition: background-color 0.3s ease;
+}
+
+tbody tr:hover {
+  background-color: #eef2f7;
+}
+
+tbody td {
+  color: #666;
+}
+
+/* Table Action Links Styling */
+td button {
+  background: none;
+  font-size: 0.9rem; /* Smaller size */
+  color: #fff;
+  padding: 6px 12px; /* Smaller padding */
+  margin: 3px 5px; /* Margin to space buttons */
+  border-radius: 8px;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  transition: all 0.3s ease;
+  width: auto; /* Allow width to be adjusted based on content */
+}
+
+/* Flexbox container for actions to arrange buttons properly */
+td .actionButtons {
+  display: flex;
+  justify-content: space-evenly; /* Space out buttons horizontally */
+  align-items: center;
+  width: 100%;
+}
+
+/* View Action - Green */
+td .view {
+  background-color: #4f8fd2; /* Green for View */
+  border: 1px solid #4f8fd2;
+}
+
+td button.view:hover {
+  background-color: #3977b1; /* Darker Green */
+  border-color: #3977b1;
+}
+
+/* Edit Action - Blue */
+td button.edit {
+  background-color: #3977b1; /* Blue for Edit */
+  border: 1px solid #3977b1;
+}
+
+td button.edit:hover {
+  background-color: #0b7dda; /* Darker Blue */
+  border-color: #0b7dda;
+}
+
+/* Delete Action - Red */
+td button.delete {
+  background-color: #4f8fd2; /* Red for Delete */
+  border: 1px solid #4f8fd2;
+}
+
+td button.delete:hover {
+  background-color: #3977b1; /* Darker Red */
+  border-color: #3977b1;
+}
+
+
+/* Style for Actions Column */
+td {
+  text-align: center;
+}
+
+/* Optional: Add a spacing between action buttons */
+td .actionButtons button {
+  margin: 0 5px; /* Spacing between buttons */
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes tableAppear {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+  .container {
+    width: 95%;
+    padding: 20px;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  .addBtn {
+    font-size: 1.1rem;
+    padding: 12px 20px;
+  }
+
+  table {
+    font-size: 0.95rem;
+  }
+
+  th,
+  td {
+    padding: 12px 15px;
+  }
+
+  /* Card adjustments for small screens */
+  .card {
+    padding: 15px;
+  }
+}
+/* Container for pagination buttons */
+.paginationContainer {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+/* Style for Pagination Buttons */
+.paginationButton {
+  color: white;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 25px; /* Slightly more subtle rounded corners */
+  cursor: pointer;
+  transition: box-shadow 0.3s ease, background-color 0.3s ease; /* Adding transition for background color */
+  background-color: #4f8fd2; /* Button color */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Hover Effect: Lighter shade of the button color and a more prominent shadow */
+.paginationButton:hover {
+  background-color: #3977b1; /* Lighter shade of the original button color */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* More pronounced shadow on hover */
+}
+
+/* Disabled Button State */
+.paginationButton:disabled {
+  background-color: #d4d4d4; /* Grey background for disabled state */
+  color: #a1a1a1; /* Lighter text for disabled state */
+  cursor: not-allowed; /* Prevent hover effect on disabled */
+  box-shadow: none; /* Remove shadow for disabled buttons */
+}
+
+/* Optional: Style adjustments for small screens */
+@media (max-width: 768px) {
+  .paginationButton {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+}

@@ -1,35 +1,34 @@
-
-
-
-
-
-/* Container for the form */
 .container {
   background-color: #fff;
   border-radius: 12px;
   box-shadow: 0 6px 30px rgba(0, 0, 0, 0.1);
-  width: 400px;
-  padding: 40px;
+  width: 500px;
+  padding: 15px 40px;
   text-align: center;
   animation: fadeIn 1.5s ease-in-out;
+  margin-top: 2rem;
 }
 
-/* Heading styling */
-h2 {
+.container h2 {
+  font-family: "Roboto", serif;
   font-size: 2rem;
   color: #333;
-  margin-bottom: 30px;
-  font-weight: 700;
+  margin-bottom: 1.8rem;
+  font-weight: 500;
 }
 
-/* Form layout */
-form {
+.container form {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 15px;
+
+  .form_group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
 }
 
-/* Label styling */
 label {
   text-align: left;
   font-size: 1rem;
@@ -41,7 +40,8 @@ label {
 input[type="text"],
 input[type="email"],
 input[type="date"],
-input[type="number"] { /* Added for salary input */
+input[type="number"] {
+  /* Added for salary input */
   padding: 12px;
   font-size: 1rem;
   border: 1px solid #ccc;
@@ -54,53 +54,53 @@ input[type="number"] { /* Added for salary input */
 input[type="text"]:focus,
 input[type="email"]:focus,
 input[type="date"]:focus,
-input[type="number"]:focus { /* Added for salary input */
-  border-color: #ff4b1f;
+input[type="number"]:focus {
+  /* Added for salary input */
+  border-color: #4f8fd2;
 }
 
-/* Button styling */
-button {
-  background: linear-gradient(135deg, #ff4b1f, #ff9068);
+.form_action {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.save_btn {
+  background: linear-gradient(135deg, #4f8fd2, #3977b1);
   border: none;
   border-radius: 50px;
   color: white;
   font-size: 1rem;
-  padding: 12px 25px;
+  padding-block: 12px;
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-  width: 100%; /* Ensures the button takes the full width of the form */
+  width: 100%;
 }
 
-/* Button hover effect */
-button:hover {
+.save_btn:hover {
   transform: scale(1.05);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
 }
 
-/* Button focus effect */
-button:focus {
+.save_btn:focus {
   outline: none;
 }
 
-/* Link styling */
-a {
+.back_btn {
   text-decoration: none;
-  color: #ff4b1f;
+  color: #6c757d; 
   font-size: 1rem;
-  margin-top: 15px;
   transition: color 0.3s ease;
   display: inline-block;
   width: 100%;
   text-align: center;
 }
 
-/* Link hover effect */
-a:hover {
-  color: #ff9068;
+.back_btn:hover {
+  color: #4f8fd2;
 }
 
-/* Fade-in animation */
 @keyframes fadeIn {
   0% {
     opacity: 0;
@@ -112,7 +112,6 @@ a:hover {
   }
 }
 
-/* Responsive design for smaller screens */
 @media (max-width: 768px) {
   .container {
     width: 90%;
@@ -128,4 +127,27 @@ a:hover {
     padding: 12px 25px;
   }
 }
+select {
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.3s ease;
+  background-color: white;
+}
 
+select:focus {
+  border-color: #4f8fd2;
+}
+select option {
+  padding: 10px;
+  background-color: #fff;
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  select {
+    width: 100%;
+  }
+}

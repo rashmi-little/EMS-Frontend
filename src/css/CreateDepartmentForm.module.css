@@ -1,0 +1,153 @@
+.container {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.1);
+  width: 500px;
+  padding: 15px 40px;
+  text-align: center;
+  margin-top: 10rem;
+}
+
+.container h2 {
+  font-family: "Roboto", serif;
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 1.8rem;
+  font-weight: 500;
+}
+
+.container form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  .form_group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+label {
+  text-align: left;
+  font-size: 1rem;
+  color: #555;
+  font-weight: 600;
+}
+
+/* Styling for input fields */
+input[type="text"],
+input[type="email"],
+input[type="date"],
+input[type="number"] {
+  /* Added for salary input */
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+/* Focus styling for input fields */
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="date"]:focus,
+input[type="number"]:focus {
+  /* Added for salary input */
+  border-color: #4f8fd2;
+}
+
+.form_action {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.save_btn {
+  background: linear-gradient(135deg, #4f8fd2, #3977b1);
+  border: none;
+  border-radius: 50px;
+  color: white;
+  font-size: 1rem;
+  padding-block: 12px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  width: 100%;
+}
+
+.save_btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.save_btn:focus {
+  outline: none;
+}
+
+.back_btn {
+  text-decoration: none;
+  color: #6c757d; 
+  font-size: 1rem;
+  /* margin-top: 15px; */
+  transition: color 0.3s ease;
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+}
+
+.back_btn:hover {
+  color: #4f8fd2;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: 90%;
+    padding: 20px;
+  }
+
+  h2 {
+    font-size: 1.6rem;
+  }
+
+  button {
+    font-size: 1rem;
+    padding: 12px 25px;
+  }
+}
+select {
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.3s ease;
+  background-color: white;
+}
+
+select:focus {
+  border-color: #4f8fd2;
+}
+select option {
+  padding: 10px;
+  background-color: #fff;
+  color: #000;
+}
+
+@media (max-width: 768px) {
+  select {
+    width: 100%;
+  }
+}

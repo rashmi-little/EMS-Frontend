@@ -1,0 +1,112 @@
+
+.container {
+  width: 100%;
+  max-width: 900px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.header {
+  font-size: 2.2rem;
+  color: #3B4E84;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.detailsGroup {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.details {
+  font-size: 1.2rem;
+  color: #404040;
+  margin: 10px 0;
+}
+
+.label {
+  font-weight: bold;
+  color: #A4B5E1;
+}
+
+.departmentList {
+  display: flex;
+  flex-direction: row;
+  text-align: left;
+}
+
+.subHeader {
+  font-size: 1.5rem;
+  color: #A3D1C6;
+  margin-bottom: 10px;
+}
+
+.departments {
+  list-style-type: none;
+  padding: 0;
+}
+
+.departmentItem {
+  font-size: 1.2rem;
+  color: #3d8ce0;
+  padding: 8px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.departmentItem:last-child {
+  border-bottom: none;
+}
+
+/* Back Button */
+.backButton {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 30px;
+  background-color: #7FB7D5;
+  color: #000;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+}
+
+.backButton:hover {
+  background-color: #4A6C93; /* Add a pop of color on hover */
+  color: #fff;
+}
+
+
+/* Loading Text */
+p {
+  font-size: 1.2rem;
+  color: #888;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .header {
+    font-size: 1.8rem;
+  }
+
+  .details {
+    font-size: 1rem;
+  }
+
+  .subHeader {
+    font-size: 1.2rem;
+  }
+
+  .departmentItem {
+    font-size: 1rem;
+  }
+}
