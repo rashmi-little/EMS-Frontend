@@ -1,5 +1,5 @@
 import { Link, useNavigate, useParams } from "react-router-dom";
-import styles from "../css/CreateEmployeeForm.module.css";
+import styles from "@styles/CreateEmployeeForm.module.css";
 import { useEffect, useState } from "react";
 import Select from "react-select/base";
 import { toast } from "react-toastify";

@@ -1,5 +1,5 @@
 import { Link, useNavigate, useParams } from "react-router-dom";
-import styles from "../css/CreateDepartmentForm.module.css";
+import styles from "@styles/CreateDepartmentForm.module.css";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { updateDepartment } from "../services/DepartmentService";

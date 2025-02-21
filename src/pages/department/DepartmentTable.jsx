@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "../../css/DepartmentTable.module.css";
-import "../../css/Base.css";
+import "@styles/Base.css";
 import { toast } from "react-toastify";
 import {
   deleteDepartmentById,
