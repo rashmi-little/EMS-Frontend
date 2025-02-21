@@ -11,5 +11,9 @@ export function addDepartmentToEmployee(empId, deptId) {
 }
 
 export function addDepartmentsToEmployee(empId, deptIds) {
-  return api.put(`${BASE_URL}/employees/${empId}/multiple-departments`, deptIds);
+  return api.put(
+    `${BASE_URL}/employees/${empId}/multiple-departments`,
+    deptIds
+  );
 }
+
