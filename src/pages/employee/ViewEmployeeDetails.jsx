@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import styles from "../../css/EmployeeView.module.css";
+import styles from "@styles/EmployeeView.module.css";
 import { getEmployeeWithDepartments } from "../../services/RelationShipService";
 import { toast } from "react-toastify";
 

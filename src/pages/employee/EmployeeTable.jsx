@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import styles from "../../css/EmployeeTable.module.css";
+import styles from "@styles/EmployeeTable.module.css";
 import "../../css/Base.css";
 import { toast } from "react-toastify";
 import {
