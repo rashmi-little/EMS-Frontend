@@ -17,14 +17,3 @@ export function addDepartmentsToEmployee(empId, deptIds) {
   );
 }
 
-export function addEmployeeWithDepartments(employeeRequestDto, deptIds) {
-  return api.post(
-    `${BASE_URL}/employees/save-with-departments`,
-    employeeRequestDto,
-    {
-      params: {
-        deptIds: Array.from(deptIds), 
-      },
-    }
-  );
-}

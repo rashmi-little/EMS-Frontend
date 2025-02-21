@@ -7,9 +7,8 @@ import {
   addDepartmentsToEmployee,
   getEmployeeWithDepartments,
 } from "../services/RelationShipService";
-import { updateEmployee } from "../services/EmployeeService";
+import { addEmployee, updateEmployee } from "../services/EmployeeService";
 import { getDepartments } from "../services/DepartmentService";
-import { addEmployeeWithDepartments } from "../services/RelationShipService";
 
 export default ({ empId, type }) => {
   const [employee, setEmployee] = useState({
@@ -87,45 +86,46 @@ export default ({ empId, type }) => {
     const employeeRequestDto = { ...employee };
 
     if (empId) {
-      try {
-        const employeeResponse = await updateEmployee(
-          empId,
-          employeeRequestDto
-        );
-        if (employeeResponse.status !== 200) {
-          throw new Error("Failed to update employee");
-        }
-
-        const updateDepartmentsResponse = await addDepartmentsToEmployee(
-          empId,
-          Array.from(departmentIds)
-        );
-
-        if (updateDepartmentsResponse.status === 200) {
-          toast.success("Employee updated successfully");
-        } else {
-          throw new Error("Failed to update departments");
-        }
-      } catch (error) {
-        toast.error("Something went wrong. Please try again later");
-      }
+      await makeEmployeeUpdate(employeeRequestDto);
     } else {
-      try {
-        const employeeResponse = await addEmployeeWithDepartments(
-          employeeRequestDto,
-          Array.from(departmentIds)
-        );
-
-        if (employeeResponse.status !== 201) {
-          throw new Error("Failed to add employee");
-        }
-      } catch (error) {
-        toast.error("Something went wrong. Please try again later");
-      }
+      await makeEmployeeAdd(employeeRequestDto);
     }
-
-    toast.success(`Employee ${type} successfully`);
     navigate("/");
+  }
+
+  async function makeEmployeeAdd(employeeRequestDto) {
+    try {
+      const employeeResponse = await addEmployee(
+        employeeRequestDto,
+        departmentIds
+      );
+
+      if (employeeResponse.status !== 201) {
+        throw new Error("Failed to add employee");
+      }
+      toast.success(`Employee ${type} successfully`);
+    } catch (error) {
+      toast.error("Something went wrong. Please try again later");
+    }
+  }
+
+  async function makeEmployeeUpdate(employeeRequestDto) {
+    try {
+      const employeeResponse = await updateEmployee(
+        empId,
+        employeeRequestDto,
+        departmentIds
+      );
+
+      if (employeeResponse.status !== 200) {
+        throw new Error("Failed to update employee");
+      }
+
+      toast.success(`Employee ${type} succesfully`);
+    } catch (error) {
+      console.log(error);
+      toast.error("Something went wrong. Please try again later");
+    }
   }
 
   function handleInputChange(e) {
