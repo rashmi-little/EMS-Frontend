@@ -26,6 +26,8 @@ export default () => {
       const response = await getDepartmentsInBatch(currentPage);
 
       const pageDepartments = response.data;
+      console.log(pageDepartments);
+      
       setPageDepartments(pageDepartments);
       const departments = pageDepartments.content;
 
