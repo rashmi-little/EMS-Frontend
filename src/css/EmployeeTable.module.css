@@ -123,6 +123,7 @@ td button {
   text-align: center;
   transition: all 0.3s ease;
   width: auto; /* Allow width to be adjusted based on content */
+  cursor: pointer;
 }
 
 /* Flexbox container for actions to arrange buttons properly */
@@ -131,6 +132,7 @@ td .actionButtons {
   justify-content: space-evenly; /* Space out buttons horizontally */
   align-items: center;
   width: 100%;
+  cursor: pointer;
 }
 
 /* View Action - Green */
@@ -175,6 +177,7 @@ td {
 /* Optional: Add a spacing between action buttons */
 td .actionButtons button {
   margin: 0 5px; /* Spacing between buttons */
+  cursor: pointer;
 }
 
 @keyframes fadeIn {
