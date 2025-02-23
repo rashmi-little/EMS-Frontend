@@ -1,10 +1,10 @@
 import { render, screen } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import { vi } from "vitest";
-import ProtectedRoute from "../components/ProtectedRoute";
-import { isAuthenticate } from "../services/authservice";
+import ProtectedRoute from "../../components/ProtectedRoute"
+import { isAuthenticate } from "../../services/authservice";
 
-vi.mock("../services/authservice", () => ({
+vi.mock("../../services/authservice", () => ({
   isAuthenticate: vi.fn(),
 }));
 

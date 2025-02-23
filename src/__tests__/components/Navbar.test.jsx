@@ -1,7 +1,7 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import { describe, it, expect } from "vitest";
-import Navbar from "../components/Navbar";
+import Navbar from "../../components/Navbar";
 
 describe("Navbar", () => {
   it("renders the correct navigation links", () => {
