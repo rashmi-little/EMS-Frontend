@@ -14,19 +14,13 @@ export default () => {
   }, [empId]);
 
   const fetchEmployee = async () => {
-    try {
-      const response = await getEmployeeWithDepartments(empId);
+    const response = await getEmployeeWithDepartments(empId);
 
-      if (response.status === 200) {
-        const employeeWithDepartment = response.data;
+    if (response.status === 200) {
+      const employeeWithDepartment = response.data;
 
-        setEmployee(employeeWithDepartment.employee);
-        setDepartments(employeeWithDepartment.departments);
-      } else {
-        throw new Error("Unable to fetch employee");
-      }
-    } catch (error) {
-      toast.error(error.message || "something went wrong");
+      setEmployee(employeeWithDepartment.employee);
+      setDepartments(employeeWithDepartment.departments);
     }
   };
 

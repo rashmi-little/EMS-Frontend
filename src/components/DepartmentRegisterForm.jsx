@@ -21,21 +21,11 @@ export default ({ deptId, type }) => {
   }, []);
 
   const fetchDepartment = async () => {
-    try {
-      const response = await getDepartmentById(deptId);
-      const department = response.data;
+    const response = await getDepartmentById(deptId);
+    const department = response.data;
 
-      if (response.status !== 200) {
-        throw new Error("unable to fetch department");
-      }
-
-      setName(department.name);
-      setLocation(department.location);
-    } catch (error) {
-      toast.error(
-        error.message || "something went wrong while fetching department"
-      );
-    }
+    setName(department.name);
+    setLocation(department.location);
   };
 
   function handleNameChange(e) {

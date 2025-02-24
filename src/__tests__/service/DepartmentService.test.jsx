@@ -22,14 +22,14 @@ describe("Department service", () => {
     });
 
     expect(DepartmentService.getDepartmentsInBatch).toHaveBeenCalledTimes(1);
-    expect(DepartmentService.getDepartmentsInBatch).toHaveBeenCalledWith(1);
+    expect(DepartmentService.getDepartmentsInBatch).toHaveBeenCalledWith(1,5);
     screen.debug();
   });
 
   it("should return the same data as axios mock value", async () => {
     mock.onGet("/departments/batch/1").reply(200, mockDepartmentsResponse);
 
-    const result = await DepartmentService.getDepartmentsInBatch(1);
+    const result = await DepartmentService.getDepartmentsInBatch(1,5);
 
     expect(result.data.content).toEqual(mockDepartmentsResponse.data.content);
     expect(result.data.totalPages).toBe(1);
