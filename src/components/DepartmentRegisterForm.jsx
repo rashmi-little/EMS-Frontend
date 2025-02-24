@@ -2,11 +2,11 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import styles from "@styles/CreateDepartmentForm.module.css";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
-import { updateDepartment } from "../services/DepartmentService";
+import { updateDepartment } from "../services/departmentService";
 import {
   addDepartment,
   getDepartmentById,
-} from "../services/DepartmentService";
+} from "../services/departmentService";
 
 export default ({ deptId, type }) => {
   const [name, setName] = useState("");

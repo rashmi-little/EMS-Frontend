@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 import {
   deleteEmployee,
   getEmployeeInBatch,
-} from "../../services/EmployeeService";
+} from "../../services/employeeService.js";
 
 export default () => {
   const [employees, setEmployees] = useState([]);
@@ -25,6 +25,8 @@ export default () => {
     try {
       const response = await getEmployeeInBatch(currentPage);
       if (response.status === 200) {
+        console.log(response);
+        
         const pageEmployee = response.data;
         setPageEmployee(pageEmployee);
         const employees = pageEmployee.content;

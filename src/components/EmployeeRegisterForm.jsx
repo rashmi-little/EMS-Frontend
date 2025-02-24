@@ -3,12 +3,9 @@ import styles from "@styles/CreateEmployeeForm.module.css";
 import { useEffect, useState } from "react";
 import Select from "react-select/base";
 import { toast } from "react-toastify";
-import {
-  addDepartmentsToEmployee,
-  getEmployeeWithDepartments,
-} from "../services/RelationShipService";
-import { addEmployee, updateEmployee } from "../services/EmployeeService";
-import { getDepartments } from "../services/DepartmentService";
+import { getEmployeeWithDepartments } from "../services/relationShipService.js";
+import { addEmployee, updateEmployee } from "../services/employeeService.js";
+import { getDepartments } from "../services/departmentService";
 
 export default ({ empId, type }) => {
   const [employee, setEmployee] = useState({
@@ -191,6 +188,7 @@ export default ({ empId, type }) => {
         <div className={styles.form_group}>
           <label>{type} Departments:</label>
           <Select
+            data-testid="department-select"
             options={allDepartments.map((dept) => ({
               value: dept.id,
               label: dept.name,
@@ -216,7 +214,7 @@ export default ({ empId, type }) => {
         </div>
 
         <div className={styles.form_action}>
-          <button className={styles.save_btn}>{type}</button>
+          <button className={styles.save_btn} data-testid="save">{type}</button>
           <Link to="/" className={styles.back_btn}>
             Back
           </Link>

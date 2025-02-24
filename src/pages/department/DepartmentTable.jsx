@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 import {
   deleteDepartmentById,
   getDepartmentsInBatch,
-} from "../../services/DepartmentService";
+} from "../../services/departmentService";
 
 export default () => {
   const [departments, setDepartments] = useState([]);
@@ -27,7 +27,7 @@ export default () => {
 
       const pageDepartments = response.data;
       console.log(pageDepartments);
-      
+
       setPageDepartments(pageDepartments);
       const departments = pageDepartments.content;
 
