@@ -21,7 +21,7 @@ describe("Employee service", () => {
     });
 
     expect(EmployeeService.getEmployeeInBatch).toHaveBeenCalledTimes(1);
-    expect(EmployeeService.getEmployeeInBatch).toHaveBeenCalledWith(1);
+    expect(EmployeeService.getEmployeeInBatch).toHaveBeenCalledWith(1,5);
   });
 
   it("should return the same data as axios mock value", async () => {

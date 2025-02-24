@@ -23,27 +23,21 @@ export default () => {
   const navigate = useNavigate();
 
   const fetchDepartments = async () => {
-    try {
-      const response = await getDepartmentsInBatch(currentPage, pageSize);
+    const response = await getDepartmentsInBatch(currentPage, pageSize);
 
-      const pageDepartments = response.data;
+    const pageDepartments = response.data;
 
-      setPageDepartments(pageDepartments);
-      const departments = pageDepartments.content;
+    setPageDepartments(pageDepartments);
+    const departments = pageDepartments.content;
 
-      if (departments.length == 0) {
-        handlePageDecrease();
-      }
-      if (response.status !== 200) {
-        throw new Error("unable to fetch departments");
-      }
-
-      setDepartments(departments);
-    } catch (error) {
-      toast.error(
-        error.message || "something went wrong while fetching departments."
-      );
+    if (departments.length == 0) {
+      handlePageDecrease();
     }
+    if (response.status !== 200) {
+      throw new Error("unable to fetch departments");
+    }
+
+    setDepartments(departments);
   };
 
   useEffect(() => {
@@ -94,8 +88,6 @@ export default () => {
 
   function handlePageSizeChange(e) {
     setPageSize(e.target.value);
-    console.log(e.target.value);
-    
   }
   return (
     <div className={styles.container}>

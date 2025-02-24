@@ -1,7 +1,5 @@
-import { StrictMode } from "react";
+import React, { StrictMode, Suspense } from "react";
 import { createRoot } from "react-dom/client";
-
-import { isAuthenticate } from "./services/authservice.js";
 import {
   createBrowserRouter,
   Navigate,
@@ -9,17 +7,34 @@ import {
 } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import Login from "./pages/login/Login.jsx";
-import DashBoard from "./pages/dashboard/DashBoard.jsx";
-import EmployeeTable from "./pages/employee/EmployeeTable.jsx";
-import ViewEmployeeDetails from "./pages/employee/ViewEmployeeDetails.jsx";
-import EditEmployee from "./pages/employee/EditEmployee.jsx";
-import CreateEmployee from "./pages/employee/CreateEmployee.jsx";
-import DepartmentTable from "./pages/department/DepartmentTable.jsx";
-import CreateDepartment from "./pages/department/CreateDepartment.jsx";
-import ViewDepartmentDetails from "./pages/department/ViewDepartmentDetails.jsx";
-import EditDepartment from "./pages/department/EditDepartment.jsx";
 import Logout from "./pages/login/Logout.jsx";
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
+
+const DashBoard = React.lazy(() => import("./pages/dashboard/DashBoard.jsx"));
+const EmployeeTable = React.lazy(() =>
+  import("./pages/employee/EmployeeTable.jsx")
+);
+const CreateEmployee = React.lazy(() =>
+  import("./pages/employee/CreateEmployee.jsx")
+);
+const ViewEmployeeDetails = React.lazy(() =>
+  import("./pages/employee/ViewEmployeeDetails.jsx")
+);
+const EditEmployee = React.lazy(() =>
+  import("./pages/employee/EditEmployee.jsx")
+);
+const DepartmentTable = React.lazy(() =>
+  import("./pages/department/DepartmentTable.jsx")
+);
+const CreateDepartment = React.lazy(() =>
+  import("./pages/department/CreateDepartment.jsx")
+);
+const ViewDepartmentDetails = React.lazy(() =>
+  import("./pages/department/ViewDepartmentDetails.jsx")
+);
+const EditDepartment = React.lazy(() =>
+  import("./pages/department/EditDepartment.jsx")
+);
 
 const router = createBrowserRouter([
   {
@@ -29,9 +44,11 @@ const router = createBrowserRouter([
   {
     path: "dashboard",
     element: (
-      <ProtectedRoute>
-        <DashBoard />
-      </ProtectedRoute>
+      <Suspense fallback={<div>Dashboard is loading ...</div>}>
+        <ProtectedRoute>
+          <DashBoard />
+        </ProtectedRoute>
+      </Suspense>
     ),
     children: [
       {

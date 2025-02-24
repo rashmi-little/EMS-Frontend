@@ -20,7 +20,7 @@ describe("department table", () => {
     });
 
     expect(DepartmentService.getDepartmentsInBatch).toHaveBeenCalledTimes(1); 
-    expect(DepartmentService.getDepartmentsInBatch).toHaveBeenCalledWith(1);
+    expect(DepartmentService.getDepartmentsInBatch).toHaveBeenCalledWith(1,5);
 
     await waitFor(() => {
       const marketing = screen.getByText(/Marketing/i);

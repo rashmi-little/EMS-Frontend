@@ -23,27 +23,16 @@ export default () => {
   const navigate = useNavigate();
 
   const fetchEmployees = async () => {
-    try {
-      const response = await getEmployeeInBatch(currentPage, pageSize);
-      if (response.status === 200) {
-        console.log(response);
+    const response = await getEmployeeInBatch(currentPage, pageSize);
 
-        const pageEmployee = response.data;
-        setPageEmployee(pageEmployee);
-        const employees = pageEmployee.content;
+    const pageEmployee = response.data;
+    setPageEmployee(pageEmployee);
+    const employees = pageEmployee.content;
 
-        if (employees.length === 0) {
-          handlePageDecrease();
-        }
-        setEmployees(employees);
-      } else {
-        throw new Error("error fetching employee");
-      }
-    } catch (error) {
-      toast.error(
-        error.message || "something went wrong. please try again later"
-      );
+    if (employees.length === 0) {
+      handlePageDecrease();
     }
+    setEmployees(employees);
   };
 
   useEffect(() => {
@@ -95,7 +84,6 @@ export default () => {
   }
   function handlePageSizeChange(e) {
     setPageSize(e.target.value);
-    
   }
   return (
     <div className={styles.container}>

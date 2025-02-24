@@ -16,4 +16,3 @@ export function addDepartmentsToEmployee(empId, deptIds) {
     deptIds
   );
 }
-

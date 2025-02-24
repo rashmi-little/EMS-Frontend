@@ -20,7 +20,7 @@ describe("employee table", () => {
     });
 
     expect(EmployeeService.getEmployeeInBatch).toHaveBeenCalledTimes(1);
-    expect(EmployeeService.getEmployeeInBatch).toHaveBeenCalledWith(1);
+    expect(EmployeeService.getEmployeeInBatch).toHaveBeenCalledWith(1,5);
 
     await waitFor(() => {
       const johnDoe = screen.getByText(/John Doe/i);

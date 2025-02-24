@@ -214,7 +214,9 @@ export default ({ empId, type }) => {
         </div>
 
         <div className={styles.form_action}>
-          <button className={styles.save_btn} data-testid="save">{type}</button>
+          <button className={styles.save_btn} data-testid="save">
+            {type}
+          </button>
           <Link to="/" className={styles.back_btn}>
             Back
           </Link>
