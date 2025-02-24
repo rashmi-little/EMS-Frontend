@@ -18,15 +18,15 @@ export default () => {
     page: 1,
   });
   const [currentPage, setCurrentPage] = useState(1);
+  const [pageSize, setPageSize] = useState(5);
 
   const navigate = useNavigate();
 
   const fetchDepartments = async () => {
     try {
-      const response = await getDepartmentsInBatch(currentPage);
+      const response = await getDepartmentsInBatch(currentPage, pageSize);
 
       const pageDepartments = response.data;
-      console.log(pageDepartments);
 
       setPageDepartments(pageDepartments);
       const departments = pageDepartments.content;
@@ -48,7 +48,7 @@ export default () => {
 
   useEffect(() => {
     fetchDepartments();
-  }, [currentPage]);
+  }, [currentPage, pageSize]);
 
   function handleView(deptId) {
     navigate(`./view/${deptId}`);
@@ -90,6 +90,12 @@ export default () => {
 
   function handlePageIncrease() {
     setCurrentPage((prev) => prev + 1);
+  }
+
+  function handlePageSizeChange(e) {
+    setPageSize(e.target.value);
+    console.log(e.target.value);
+    
   }
   return (
     <div className={styles.container}>
@@ -160,6 +166,14 @@ export default () => {
         >
           Next
         </button>
+        <div className={styles.pageCount}>
+          <label htmlFor="page">PageCount</label>
+          <select name="page" id="page" onChange={handlePageSizeChange}>
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="15">15</option>
+          </select>
+        </div>
       </div>
     </div>
   );

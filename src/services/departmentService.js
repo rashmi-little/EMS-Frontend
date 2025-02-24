@@ -10,8 +10,8 @@ export function getDepartmentById(deptId) {
   return api.get(`${BASE_URL}/${deptId}`);
 }
 
-export function getDepartmentsInBatch(pageNumber) {
-  return api.get(`${BASE_URL}/batch/${pageNumber}`);
+export function getDepartmentsInBatch(pageNumber, pageSize) {
+  return api.get(`${BASE_URL}/batch/${pageNumber}/${pageSize}`);
 }
 
 export function deleteDepartmentById(deptId) {

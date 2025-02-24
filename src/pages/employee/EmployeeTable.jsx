@@ -18,15 +18,16 @@ export default () => {
     page: 1,
   });
   const [currentPage, setCurrentPage] = useState(1);
+  const [pageSize, setPageSize] = useState(5);
 
   const navigate = useNavigate();
 
   const fetchEmployees = async () => {
     try {
-      const response = await getEmployeeInBatch(currentPage);
+      const response = await getEmployeeInBatch(currentPage, pageSize);
       if (response.status === 200) {
         console.log(response);
-        
+
         const pageEmployee = response.data;
         setPageEmployee(pageEmployee);
         const employees = pageEmployee.content;
@@ -47,7 +48,7 @@ export default () => {
 
   useEffect(() => {
     fetchEmployees();
-  }, [currentPage]);
+  }, [currentPage, pageSize]);
 
   function handleView(empId) {
     navigate(`./view/${empId}`);
@@ -91,6 +92,10 @@ export default () => {
 
   function handlePageIncrease() {
     setCurrentPage((prev) => prev + 1);
+  }
+  function handlePageSizeChange(e) {
+    setPageSize(e.target.value);
+    
   }
   return (
     <div className={styles.container}>
@@ -164,6 +169,14 @@ export default () => {
         >
           Next
         </button>
+        <div className={styles.pageCount}>
+          <label htmlFor="page">PageCount</label>
+          <select name="page" id="page" onChange={handlePageSizeChange}>
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="15">15</option>
+          </select>
+        </div>
       </div>
     </div>
   );
