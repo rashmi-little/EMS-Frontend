@@ -10,8 +10,8 @@ export function getEmployeeById(empId) {
   return api.get(`${BASE_URL}/${empId}`);
 }
 
-export function getEmployeeInBatch(pageNumber) {
-  return api.get(`${BASE_URL}/batch/${pageNumber}`);
+export function getEmployeeInBatch(pageNumber, pageSize) {
+  return api.get(`${BASE_URL}/batch/${pageNumber}/${pageSize}`);
 }
 
 export function deleteEmployee(empId) {

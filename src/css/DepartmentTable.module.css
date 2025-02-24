@@ -181,6 +181,14 @@ td .actionButtons button {
   margin: 0 5px; /* Spacing between buttons */
 }
 
+.pageCount {
+  margin-left: 2rem;
+  display: flex;
+  gap: 2rem;
+  justify-content: flex-end;
+  align-items: center;
+}
+
 @keyframes fadeIn {
   0% {
     opacity: 0;

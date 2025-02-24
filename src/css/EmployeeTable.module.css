@@ -180,6 +180,14 @@ td .actionButtons button {
   cursor: pointer;
 }
 
+.pageCount {
+  margin-left: 2rem;
+  display: flex;
+  gap: 2rem;
+  justify-content: flex-end;
+  align-items: center;
+}
+
 @keyframes fadeIn {
   0% {
     opacity: 0;
